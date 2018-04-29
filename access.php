@@ -38,7 +38,7 @@ if (!securePage($_SERVER['PHP_SELF'])){die();}
           <div class="headline">
             <h2>Thank You!</h2>
           </div>
-          <p>Thank you for being a subscribing member!</p>
+          <p>Thank you for using our service!</p>
         </div>
         <!-- Contact Us -->
         <!--<div class="who margin-bottom-30">

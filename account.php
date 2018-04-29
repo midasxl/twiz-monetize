@@ -6,7 +6,6 @@ $userdetails = fetchUserDetails(NULL, NULL, $userid); //Fetch user details
 /*
 First, it calls the 'models/config.php' file. This file connects to the database and initiates all of our functions. Second, run the securePage() function. This function checks if the page we're on is public or private, and (if it's private) checks to see if we're logged in as a user who has access to the page. If it's private and we don't have access, we'll get sent to a page we do have access to. Third is our include for the Stripe configuration files so we can communicate with the Stripe servers.
 */
-require_once('scripts/stripe/stripe-config.php'); // fetches publishable key to identify twiz site to Stripe for communication
 ?>
 
 <!DOCTYPE html>
@@ -40,10 +39,10 @@ require_once('scripts/stripe/stripe-config.php'); // fetches publishable key to 
 
 	<?php include("assets/snippets/left-nav.php"); ?>
 
-    <?php
+<?php
 if(isUserLoggedIn()) {
 
-  //********************************************************************************permission level 5 (Developer)
+  //********************************************************************************permission level 5 (Developer Role)
 	if ($loggedInUser->checkPermission(array(5))){
 
         echo '<div class="col-md-6">
@@ -242,52 +241,10 @@ if(isUserLoggedIn()) {
 			</div>
 		</div>
 	</div>';
-	}
-
-	//********************************************************************************permission level 2 (Base Member)
+	} 
+	//********************************************************************************permission level 2 (Free Member)
 	if ($loggedInUser->checkPermission(array(2))){
-	echo '<div class="col-md-3">
-        <div class="panel panel-default" >
-            <div class="panel-heading">Payment Options</div>
-                <div class="panel-body">
-                         <div>
-                         <p>FREE, however, keep in mind we do have costs and please support the efforts if you find you can.</p>'; ?>
-
-         <form action="user_charge.php" method="post">
-         <?php $isStripeCustomer = fetchStripeId($loggedInUser->user_id); //get stripe id for this user if it exists
-				foreach ($isStripeCustomer as $stripeid){
-					if($stripeid['stripeid'] !== '0'){
-							$stripe_customer = Stripe_Customer::retrieve($stripeid['stripeid']);?>
-							<input type="hidden" name="customer_id" value="<?php echo $stripeid['stripeid'] ?>" />
-					<?php }
-				} ?>
-          <p align="center">
-				
-          </p>
-          </form>
-
-        <hr class="hr-sm">
-
-          <p><a href='https://ko-fi.com/M4M6BWTB' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://az743702.vo.msecnd.net/cdn/kofi2.png?v=0' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a></p>
-          <form action="user_charge_package_10.php" method="post">
-         <?php $isStripeCustomer = fetchStripeId($loggedInUser->user_id); //get stripe id for this user if it exists
-				foreach ($isStripeCustomer as $stripeid){
-					if($stripeid['stripeid'] !== '0'){
-							$stripe_customer = Stripe_Customer::retrieve($stripeid['stripeid']);?>
-							<input type="hidden" name="customer_id" value="<?php echo $stripeid['stripeid'] ?>" />
-					<?php }
-				} ?>
-          <p align="center">
-				
-          </p>
-          </form>
-
-            <?php echo '</div>
-        </div>
-    </div>
-    </div>'; ?><!--/col-md-3-->
-
-    <div class="col-md-6">
+    echo '<div class="col-md-8">
         <div class="panel panel-default" >
             <div class="panel-heading">Available Race Sheets</div>
                 <div class="panel-body">
@@ -298,8 +255,7 @@ if(isUserLoggedIn()) {
                                <tr class="panel-heading">
                                   <th style="color:#000;">Track and Date</th>
                                   <th style="color:#000;">Sheet Expiration</th>
-                               </tr>
-								  <?php
+                               </tr>';
                                   $dbsheets = fetchAllSheets($loggedInUser->user_id);
 								  if($dbsheets != NULL){
 									  foreach ($dbsheets as $sheets){
@@ -335,71 +291,11 @@ if(isUserLoggedIn()) {
                                                 </form>&nbsp;&nbsp;
 
                                                        
-													</td>									                                
+													</td>									                                   
 												</tr>";
                                         }
 								  }
-                                  ?>
-                              </tbody>
-                          </table>
-                </div>
-            </div>
-        </div>
-    </div>
-
-	<?php }
-	//********************************************************************************permission level 3 (Subscription Member) ?>
-	<?php if ($loggedInUser->checkPermission(array(3))){
-    echo '<div class="col-md-8">
-        <div class="panel panel-default" >
-            <div class="panel-heading">Available Race Sheets</div>
-                <div class="panel-body">
-                         <div class="table-responsive">
-
-                         <table width="98%" align="center" cellpadding="3" cellspacing="0"  class="table table-bordered">
-                            <tbody>
-                               <tr class="panel-heading">
-                                  <th style="color:#000;">Track and Date</th>
-                                  <th style="color:#000;">Sheet Expiration</th>
-                               </tr>'; ?>
-								  <?php
-                                  $dbsheets = fetchAllSheets($loggedInUser->user_id);
-								  if($dbsheets != NULL){
-									  foreach ($dbsheets as $sheets){
-                                        $exp_date = date('m-d-Y H:i:s', strtotime($sheets['time'] . ' + 4 day'));
-										// Returns the file name, less the extension.
-										$sheet_id = $sheets['id'];
-										$sheet_name = preg_replace('/.[^.]*$/', '', $sheets['sheet']);
-										$sheet_name = substr($sheet_name, 0, -6);
-										$sheet_track = $sheets['racetrack'];
-										$sheet_date = date('m-d-Y', strtotime($sheets['racedate']));
-										$date_now = new DateTime();
-                                        echo "<tr style='background-color:#72c02c;text-align:center;'>
-												<td><strong>".$sheet_track."</strong><br>".$sheet_date."</td>
-												<td>".$exp_date;
-
-												if ($date_now > $sheet_date) {
-    													echo "<br><form action='user-delete-sheets.php' method='post' id='" .$sheet_track. "' class='deleteSheetSet'>
-    													<button type='submit' class='btn btn-success pull-center btn-sm btn-block'>
-    													<i class='fa fa-remove'></i>&nbsp;&nbsp;Delete This Set</button>
-    													<input type='hidden' name='sheetId' value='".$sheet_id."' />
-    													</form>";
-												}
-
-												echo "
-												</td>
-  												</tr>
-
-												<tr>
-												<td>
-                                               
-
-													</td>
-												</tr>";
-                                        }
-								  }
-                                  ?>
-                              <?php echo '</tbody>
+                          echo '</tbody>
                           </table>
                 </div>
             </div>

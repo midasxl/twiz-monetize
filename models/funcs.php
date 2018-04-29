@@ -441,9 +441,9 @@ function deleteUsers($users) {
 
 		WHERE user_id = ?");
 		
-	$stmt3 = $mysqli->prepare("DELETE FROM ".$db_table_prefix."user_credits 
+	/*$stmt3 = $mysqli->prepare("DELETE FROM ".$db_table_prefix."user_credits 
 
-		WHERE user_id = ?");
+		WHERE user_id = ?");*/
 	
 	$stmt4 = $mysqli->prepare("DELETE FROM ".$db_table_prefix."user_sheets
 	
@@ -459,9 +459,9 @@ function deleteUsers($users) {
 
 		$stmt2->execute();
 		
-		$stmt3->bind_param("i", $id);
+		/*$stmt3->bind_param("i", $id);
 
-		$stmt3->execute();
+		$stmt3->execute();*/
 		
 		$stmt4->bind_param("i", $id);
 		
@@ -475,7 +475,7 @@ function deleteUsers($users) {
 
 	$stmt2->close();
 	
-	$stmt3->close();
+	/*$stmt3->close();*/
 	
 	$stmt4->close();
 
@@ -745,10 +745,6 @@ function fetchUserDetails($email=NULL,$token=NULL, $id=NULL)
 
 		last_sign_in_stamp,
 			
-		stripe_id,
-		
-		plan_id,
-		
 		pass_change
 
 		FROM ".$db_table_prefix."users
@@ -765,11 +761,11 @@ function fetchUserDetails($email=NULL,$token=NULL, $id=NULL)
 
 	$stmt->execute();
 
-	$stmt->bind_result($id, $password, $email, $token, $activationRequest, $passwordRequest, $active, $title, $signUp, $signIn, $stripeId, $planId, $passChange);
+	$stmt->bind_result($id, $password, $email, $token, $activationRequest, $passwordRequest, $active, $title, $signUp, $signIn, $passChange);
 
 	while ($stmt->fetch()){
 
-		$row = array('id' => $id, 'password' => $password, 'email' => $email, 'activation_token' => $token, 'last_activation_request' => $activationRequest, 'lost_password_request' => $passwordRequest, 'active' => $active, 'title' => $title, 'sign_up_stamp' => $signUp, 'last_sign_in_stamp' => $signIn, 'stripe_id' => $stripeId, 'plan_id' => $planId, 'pass_change' => $passChange);
+		$row = array('id' => $id, 'password' => $password, 'email' => $email, 'activation_token' => $token, 'last_activation_request' => $activationRequest, 'lost_password_request' => $passwordRequest, 'active' => $active, 'title' => $title, 'sign_up_stamp' => $signUp, 'last_sign_in_stamp' => $signIn, 'pass_change' => $passChange);
 
 	}
 
@@ -1070,7 +1066,7 @@ function updateTitle($id, $title)
 }
 
 
-
+/*
 //Add customer id to tie in with Stripe
 
 function createCustomer($id, $stripeid)
@@ -1204,7 +1200,7 @@ function fetchPlanId($id)
 	return ($row);
 
 }
-
+*/
 
 
 //Check if a user ID exists in the DB
@@ -1412,7 +1408,7 @@ function setUserActive($token)
 }
 
 
-
+/*
 //If user exists and is active update to paid status
 
 function validatePayStatus($token)
@@ -1466,7 +1462,7 @@ function validatePayStatus($token)
 	}
 
 }
-
+*/
 
 
 //Functions that interact mainly with uc_permissions table
@@ -1675,7 +1671,7 @@ function destroySheet($sheetid) {
 
 //Add credit to user account
 //If user credit row does not exist for this user create it first, then UPDATE it
-
+/*
 function addCredit($credit, $id) {
 
 	global $mysqli,$db_table_prefix; 
@@ -1701,11 +1697,11 @@ function addCredit($credit, $id) {
 	return $result;
 
 }
-
+*/
 
 
 // remove credit from user account
-
+/*
 function removeCredit($credit, $id) {
 
 	global $mysqli,$db_table_prefix; 
@@ -1731,7 +1727,7 @@ function removeCredit($credit, $id) {
 	return $result;
 
 }
-
+*/
 
 
 //Retrieve saved sheet information for current user
@@ -1783,7 +1779,7 @@ function fetchAllSheets($id)
 
 
 //Retrieve saved credit information for current user
-
+/*
 function fetchAllCredits($id)
 
 {
@@ -1817,7 +1813,7 @@ function fetchAllCredits($id)
 	return ($row);
 
 }
-
+*/
 
 
 //Retrieve information for a single permission level

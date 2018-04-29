@@ -31,15 +31,8 @@ if (!securePage($_SERVER['PHP_SELF'])){die();}
 			<li><a id='logOutButton' href='logout.php'>Logout</a></li>";
             //<li><button type='button' id='logOutButton' class='btn btn-warning btn-xs'>Log Out</button></li>";
 			}
-			//Links for permission level 2 (Base Member)
+			//Links for permission level 2 (Free Member)
 			if ($loggedInUser->checkPermission(array(2))){
-			echo "
-			<li><a href='account.php'>Account Home</a></li>
-			<li><a href='user-profile.php'>User Profile</a></li>
-            <li><a id='logOutButton' href='logout.php'>Logout</a></li>";
-			}
-			//Links for permission level 3 (Subscription Member)
-			if ($loggedInUser->checkPermission(array(3))){
 			echo "
 			<li><a href='account.php'>Account Home</a></li>
 			<li><a href='access.php'>Process Sheet</a></li>

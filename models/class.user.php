@@ -4,8 +4,6 @@ class loggedInUser {
 	public $user_id = NULL;
 	public $hash_pw = NULL;
 	public $title = NULL;
-	public $stripe_id = NULL;
-	public $plan_id = NULL;
 	public $pass_change = NULL;
 	
 	//Simple function to update the last sign-in of a user
@@ -100,61 +98,6 @@ class loggedInUser {
 		}
 		if ($this->user_id == $master_account){
 			return true;	
-		}
-		else
-		{
-			return false;	
-		}
-		$stmt->close();
-	}
-	
-	//Does user have any credits
-	/*public function checkCredits()
-	{
-		global $mysqli,$db_table_prefix,$master_account;
-		
-		//Grant access if master user
-		
-		$stmt = $mysqli->prepare("SELECT credits 
-			FROM ".$db_table_prefix."user_credits
-			WHERE user_id = ?
-			AND credits >= ?
-			LIMIT 1
-			");
-		$access = 0;
-			if ($access == 0){
-				$stmt->bind_param("ii", $this->user_id, 1);
-				$stmt->execute();
-				$stmt->store_result();
-				if ($stmt->num_rows > 0){
-					$access = 1;
-				}
-			}
-		if ($access == 1)
-		{
-			return true;
-		}
-		else
-		{
-			return false;	
-		}
-		$stmt->close();
-	}*/
-	
-	public function checkCredits()
-	{
-		global $mysqli,$db_table_prefix;
-		
-		$stmt = $mysqli->prepare("SELECT credits
-			FROM ".$db_table_prefix."user_credits
-			WHERE user_id = ?");
-		$stmt->bind_param("i", $this->user_id);
-		$stmt->execute();
-		$stmt->bind_result($credits);
-		$stmt->fetch();
-		if ($credits >= 1)
-		{
-			return true;
 		}
 		else
 		{

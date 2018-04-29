@@ -49,8 +49,8 @@ if(!empty($_POST)){
 	//End data validation
 	if(count($errors) == 0){	
 	
-		/* Our constructor method is in class.newuser.php.  We can provide a values for the properties when we create the User object.
-You ‘feed’ the constructor method by providing a list of arguments (like you do with a function) after the class name. */
+		/* Our constructor method is in class.newuser.php.  We can provide values for the properties when we create the User object.
+		You ‘feed’ the constructor method by providing a list of arguments (like you do with a function) after the class name. */
 		//$user = new User($firstname,$lastname,$username,$displayname,$password,$email);
 		$user = new User($email,$password);
 		

@@ -11,10 +11,10 @@ class User // this is the object that is created throughout the logic, and value
 	// property declarations only available from within this class
 	private 		$clean_email;
 	private 		$clean_password;
-	private 		$username;
-	private 		$displayname;
-	private 		$user_firstname;
-	private 		$user_lastname;
+	//private 		$username;
+	//private 		$displayname;
+	//private 		$user_firstname;
+	//private 		$user_lastname;
     
 	// property declarations available from anywhere
 	public 			$user_active = 0;
@@ -22,8 +22,8 @@ class User // this is the object that is created throughout the logic, and value
 	public 			$sql_failure = false;
 	public 			$mail_failure = false;
 	public 			$email_taken = false;
-	public 			$username_taken = false;
-	public 			$displayname_taken = false;
+	//public 			$username_taken = false;
+	//public 			$displayname_taken = false;
 	public 			$activation_token = 0;
 	public 			$success = NULL;
 	
@@ -133,10 +133,6 @@ class User // this is the object that is created throughout the logic, and value
 					title,
 					sign_up_stamp,
 					last_sign_in_stamp,
-					pay_status,
-					trial,
-					stripe_id,
-					plan_id,
 					pass_change
 					)
 					VALUES (
@@ -146,12 +142,8 @@ class User // this is the object that is created throughout the logic, and value
 					'".time()."',
 					'0',
 					?,
-					'Base Member',
+					'Free Member',
 					'".time()."',
-					'0',
-					'0',
-					'0',
-					'0',
 					'0',
 					'0'
 					)");
@@ -176,19 +168,6 @@ class User // this is the object that is created throughout the logic, and value
 					VALUES (
 					?,
 					'2'
-					)");
-				$stmt->bind_param("s", $inserted_id);
-				$stmt->execute();
-				$stmt->close();
-				
-				//Insert default credit tally into credits table
-				$stmt = $mysqli->prepare("INSERT INTO ".$db_table_prefix."user_credits  (
-					user_id,
-					credits
-					)
-					VALUES (
-					?,
-					'0'
 					)");
 				$stmt->bind_param("s", $inserted_id);
 				$stmt->execute();

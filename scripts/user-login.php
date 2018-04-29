@@ -50,8 +50,6 @@ if(!empty($_POST)){
 					$loggedInUser->user_id = $userdetails["id"];
 					$loggedInUser->hash_pw = $userdetails["password"];
 					$loggedInUser->title = $userdetails["title"];
-					$loggedInUser->stripe_id = $userdetails["stripe_id"];
-					$loggedInUser->plan_id = $userdetails["plan_id"];
 					$loggedInUser->pass_change = $userdetails["pass_change"];
 					
 					//Update last sign in

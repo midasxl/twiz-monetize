@@ -3,15 +3,17 @@ require_once("models/config.php");
 if (!securePage($_SERVER['PHP_SELF'])){die();}
 //assign posted id to a variable
 $userId = $_GET['id'];
+
 //Check if selected user exists
 if(!userIdExists($userId)){
 	header("Location: admin_users.php"); die();
 }
+
 //get all user details
 $userdetails = fetchUserDetails(NULL, NULL, $userId); //Fetch user details
 
 // if admin clicked delete user button
-if (!empty($_POST['user-delete'])) {
+if (isset($_POST['user-delete'])) {
 	//Delete selected account
 	if(!empty($_POST['delete'])){
 		$deletions = $_POST['delete'];
@@ -25,7 +27,7 @@ if (!empty($_POST['user-delete'])) {
 }
 
 // if admin clicked update permissions button
-if (!empty($_POST['update-perms'])) {
+if (isset($_POST['update-perms'])) {
 		if(!empty($_POST['removePermission'])){
 			$remove = $_POST['removePermission'];
 			if ($deletion_count = removePermission($remove, $userId)){
@@ -108,9 +110,6 @@ $permissionData = fetchAllPermissions();
                 ".$userdetails['email']."
                 </p>
                 <p>
-                <label>Active Status:&nbsp;&nbsp;</label>
-                </p>
-                <p>
                 <label>Member Level:&nbsp;&nbsp;</label>
                 ".$userdetails['title']."
                 </p>
@@ -132,16 +131,6 @@ $permissionData = fetchAllPermissions();
                 
                 echo "</p>";
 				
-				// show number of credits user has if any
-				$dbcredits = fetchAllCredits($userId); //get all credits for this user funcs.php 1422
-					foreach ($dbcredits as $credits){
-							if($credits['credits'] > 0){
-							echo "<p><label>Sheet Credits:&nbsp;&nbsp;</label>
-							".$credits['credits']."</p>";
-							} else {
-							echo "<p><label>Sheet Credits:&nbsp;&nbsp;</label>0</p>";
-							}
-				}
                 //Display activation link, if account inactive
     
                 if ($userdetails['active'] == '1'){
@@ -197,8 +186,8 @@ $permissionData = fetchAllPermissions();
                 echo "
                 <form name='adminDelete' action='".$_SERVER['PHP_SELF']."?id=".$userId."' method='post'>
                 <p>
-                <label>Select to Delete User:</label>
-                <br><input type='checkbox' name='delete[".$userdetails['id']."]' id='delete[".$userdetails['id']."]' value='".$userdetails['id']."'> Delete User
+                <label>Select to Delete User:</label><br>
+				<input type='checkbox' name='delete[".$userdetails['id']."]' id='delete[".$userdetails['id']."]' value='".$userdetails['id']."'> Delete User
                 </p><hr>
                 <button type='submit' name='user-delete' class='btn btn-success pull-right'><i class='fa fa-trash-o'></i>&nbsp;&nbsp;Delete User</button>
                 </form>";
@@ -212,6 +201,6 @@ $permissionData = fetchAllPermissions();
     <?php include("footer.php"); ?>
     <?php include("modals.php"); ?>
 </div><!--/wrapper-->
-<!--<div id="form-messages" title="Throughwiz says..." style="text-align:center;padding:5px;"></div>-->
+<!--<div id="form-messages" title="Thoroughwiz says..." style="text-align:center;padding:5px;"></div>-->
 </body>
 </html>

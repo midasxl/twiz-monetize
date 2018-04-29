@@ -1,12 +1,10 @@
 <?php
 require_once("models/config.php");
-require_once('scripts/stripe/stripe-config.php'); // fetches publishable key to identify twiz site to Stripe for communication
 if (!securePage($_SERVER['PHP_SELF'])){die();}
 $userid = $loggedInUser->user_id;
 $userdetails = fetchUserDetails(NULL, NULL, $userid); //Fetch user details
 $userPermission = fetchUserPermissions($userid);
 $permissionData = fetchAllPermissions();
-$usercredits = fetchAllCredits($userid); //fetch user credits
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,9 +16,6 @@ $usercredits = fetchAllCredits($userid); //fetch user credits
 <?php include("style_block.php"); ?>
 </head>
 <body>
-<?php 
-    echo $userid;
-    ?>
 <div class="wrapper">
 	<?php include("header.php"); ?>
     <!--=== Breadcrumbs ===-->
@@ -78,24 +73,11 @@ $usercredits = fetchAllCredits($userid); //fetch user credits
                 <p>
                 <label>Member Level:&nbsp;&nbsp;</label>
                 ".$userdetails['title']."
-                </p>";
-				$isSubscriptionMember = fetchPlanId($loggedInUser->user_id); //get stripe id for this user if it exists
-					  foreach ($isSubscriptionMember as $planid){
-						  if($planid['planid'] !== '0'){
-								  $stripe_customer = Stripe_Customer::retrieve($loggedInUser->stripe_id);
-								  echo '<p><form action="user_cancel_subscription.php" method="POST">
-								  <input type="hidden" name="customer_id" value="'.$stripe_customer->id.'" />
-								  <input type="hidden" name="plan_id" value="'.$stripe_customer->subscriptions->data[0]->id.'" />
-								  <input type="submit" name="submit" value="Cancel Subscription" />
-								  </form></p>';
-						   }
-					  } 
-				echo "
+                </p>
 				<p>
                 <label>Registration Date:&nbsp;&nbsp;</label>
                 ".date("j M, Y", $userdetails['sign_up_stamp'])."
-                </p>
-				
+                </p>				
 				<p>
                 <label>Last Access Date:&nbsp;&nbsp;&nbsp;</label>";
                 if ($userdetails['last_sign_in_stamp'] == '0'){
@@ -103,31 +85,10 @@ $usercredits = fetchAllCredits($userid); //fetch user credits
                 }
                 else {
                     echo date("j M, Y", $userdetails['last_sign_in_stamp']);
-                };
-                foreach ($usercredits as $credits){
-					if($credits['credits'] > 0){
-						echo "</p><p><label>Sheet Credits:&nbsp;&nbsp;</label>".$credits['credits']."</p>";
-					} else {
-                        echo "</p><p><label>Sheet Credits:&nbsp;&nbsp;</label>0</p>";
-					}
-                }
+                };              
 			?>
             
             </div>
-            <!--<div class="table-responsive">
-                         
-                         <table width="98%" align="center" cellpadding="3" cellspacing="0"  class="table table-bordered">
-                            <tbody>
-                            	<tr>    
-                                  <th colspan="2" style="background-color:#72c02c;">Transaction History</th>
-                               </tr>
-                               <tr>    
-                                  <th>Date</th>
-                                  <th>Transaction Details</th>
-                               </tr>
-                              </tbody>
-                          </table>
-            </div>-->
             </div>
         </div>
     </div>
