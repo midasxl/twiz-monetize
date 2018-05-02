@@ -50,8 +50,7 @@ if(!empty($_POST)){
 	if(count($errors) == 0){	
 	
 		/* Our constructor method is in class.newuser.php.  We can provide values for the properties when we create the User object.
-		You ‘feed’ the constructor method by providing a list of arguments (like you do with a function) after the class name. */
-		//$user = new User($firstname,$lastname,$username,$displayname,$password,$email);
+		You provide the constructor method with a list of arguments (like you do with a function) after the class name. */
 		$user = new User($email,$password);
 		
 		//Checking this flag tells us whether there were any errors such as possible data duplication
@@ -65,7 +64,7 @@ if(!empty($_POST)){
 		else // no problems during user creation
 		{
 			//Attempt to add the user to the database, carry out finishing tasks like emailing the user (if required)
-			if(!$user->userCakeAddUser())
+			if(!$user->userAddUser())
 			{
 				if($user->mail_failure) $errors[] = lang("MAIL_ERROR");
 				if($user->sql_failure)  $errors[] = lang("SQL_ERROR");

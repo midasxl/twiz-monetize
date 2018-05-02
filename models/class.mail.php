@@ -1,6 +1,6 @@
 <?php
 
-class userCakeMail {
+class userMail {
 
 	//UserCake uses a text based system with hooks to replace various strs in txt email templates
 

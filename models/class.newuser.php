@@ -11,10 +11,6 @@ class User // this is the object that is created throughout the logic, and value
 	// property declarations only available from within this class
 	private 		$clean_email;
 	private 		$clean_password;
-	//private 		$username;
-	//private 		$displayname;
-	//private 		$user_firstname;
-	//private 		$user_lastname;
     
 	// property declarations available from anywhere
 	public 			$user_active = 0;
@@ -22,34 +18,20 @@ class User // this is the object that is created throughout the logic, and value
 	public 			$sql_failure = false;
 	public 			$mail_failure = false;
 	public 			$email_taken = false;
-	//public 			$username_taken = false;
-	//public 			$displayname_taken = false;
 	public 			$activation_token = 0;
 	public 			$success = NULL;
 	
 	// method declarations
 	/* All objects can have a special built-in method called a ‘constructor’. Constructors allow you to initialise your object’s properties (give your properties values,) when you instantiate (create) an object */
-	//function __construct($firstname,$lastname,$user,$display,$pass,$email)	
 	function __construct($email,$pass)	
 	{
-		//$this represents the User class; displayname is one of the classes properties, and it gets set to whatever is fed into the constructor
-		//$this->displayname = $display;
+		//$this represents the User class; $clean_email is one of the classes private properties
+		//it gets set to whatever is fed into the constructor
 		
 		//Sanitize
 		$this->clean_email = sanitize($email);
 		$this->clean_password = trim($pass);
-		//$this->username = sanitize($user);
-		//$this->user_firstname = sanitize($firstname);
-		//$this->user_lastname = sanitize($lastname);
 		
-		/*if(usernameExists($this->username))
-		{
-			$this->username_taken = true;
-		}
-		else if(displayNameExists($this->displayname))
-		{
-			$this->displayname_taken = true;
-		}*/
 		if(emailExists($this->clean_email))
 		{
 			$this->email_taken = true;
@@ -62,11 +44,12 @@ class User // this is the object that is created throughout the logic, and value
 	}
 	
 	// method declaration
-	public function userCakeAddUser()
+	public function userAddUser()
 	{
 		global $mysqli,$emailActivation,$websiteUrl,$db_table_prefix;
 		
 		//Prevent this function being called if there were construction errors
+		//it will be boolean true if there were no errors
 		if($this->status)
 		{
 			//Construct a secure hash for the plain text password
@@ -81,7 +64,7 @@ class User // this is the object that is created throughout the logic, and value
 				//User must activate their account first
 				$this->user_active = 0;
 				
-				$mail = new userCakeMail();
+				$mail = new userMail();
 				
 				//Build the activation message
 				$activation_message = lang("ACCOUNT_ACTIVATION_MESSAGE",array($websiteUrl,$this->activation_token));
@@ -89,7 +72,6 @@ class User // this is the object that is created throughout the logic, and value
 				//Define more if you want to build larger structures
 				$hooks = array(
 					"searchStrs" => array("#ACTIVATION-MESSAGE","#ACTIVATION-KEY","#USERNAME#"),
-					//"subjectStrs" => array($activation_message,$this->activation_token,$this->displayname)
 					"subjectStrs" => array($activation_message,$this->activation_token)
 					);
 				
@@ -103,7 +85,7 @@ class User // this is the object that is created throughout the logic, and value
 				else
 				{
 					//Send the mail. Specify users email here and subject. 
-					//SendMail can have a third parementer for message if you do not wish to build a template.
+					//SendMail can have a third parameter for message if you do not wish to build a template.
 					
 					if(!$mail->sendMail($this->clean_email,"New User"))
 					{
@@ -158,9 +140,7 @@ class User // this is the object that is created throughout the logic, and value
 				$inserted_id = $mysqli->insert_id;
 				$stmt->close();
 				
-				//Insert default permission into matches table; At this point they will all be base members (permission level 2)
-				// At any point we can set it to 3 so that all new users get a free three day trial!!
-				//A server CRON job will change their permission_id to 2 after the three day trial
+				//Insert default permission into matches table; At this point they will all be free members (permission level 2)
 				$stmt = $mysqli->prepare("INSERT INTO ".$db_table_prefix."user_permission_matches  (
 					user_id,
 					permission_id
@@ -172,6 +152,16 @@ class User // this is the object that is created throughout the logic, and value
 				$stmt->bind_param("s", $inserted_id);
 				$stmt->execute();
 				$stmt->close();
+				
+				// send email to administrator group notifying of the new member registration
+				$to      = 'sparkhw@gmail.com';
+				$subject = 'New Member Registration';
+				$message = 'A new member, ' . $this->clean_email . ', has registered for Thoroughwiz!';
+				$headers = 'From: noreply@example.com' . "\r\n" .
+				'Reply-To: noreply@example.com' . "\r\n" .
+				'X-Mailer: PHP/' . phpversion();
+
+				mail($to, $subject, $message, $headers);
 			}
 		}
 	}
