@@ -17,7 +17,6 @@
                     <li><i class='fa fa-gift'></i></li>   
                     <li><a href='#' data-toggle='modal' data-target='#resources'>Resources</a></li>  
                     <li class='topbar-divider'></li>
-					<li><a href='https://ko-fi.com/M4M6BWTB'>Buy Me a Coffee</a></li>
                     <li><i class='fa fa-exclamation-circle'></i></li>             
                     <li><a href='https://knowtheodds.org' target='_blank'>NOT INTENDED FOR GAMBLING</a></li>";
                     /*<li class='topbar-divider'></li> 
@@ -32,7 +31,6 @@
                     <li><a href='#' data-toggle='modal' data-target='#resources'>Resources</a></li> 
                     <!--<li><a href='#' data-toggle='modal' data-target='#promo' style='color:#3e4753'>P</a></li>-->
                     <li class='topbar-divider'></li>
-					<li><a href='https://ko-fi.com/M4M6BWTB'>Buy Me a Coffee</a></li>
                     <li><i class='fa fa-exclamation-circle'></i></li>           		
                     <li><a href='https://knowtheodds.org' target='_blank'>NOT INTENDED FOR GAMBLING</a></li>";
 					

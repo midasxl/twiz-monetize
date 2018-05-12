@@ -50,7 +50,7 @@ if (!securePage($_SERVER['PHP_SELF'])){die();}
             <span class="input-group-addon"><i class="fa fa-comment"></i></span>
             <textarea rows="8" name="message" id="message" maxlength="250" placeholder="Your Message" class="form-control" required></textarea>
         </div>
-        <label>Security Code (enter code below):</label><br><img src='models/captcha.php'>
+        <label>Enter the security code below:</label><br><img src='models/captcha.php'>
             <div class="input-group margin-bottom-20">    
                     <span class="input-group-addon"><i class="fa fa-key"></i></span>
                     <input type="text" name="captcha" id="captcha" class="form-control" required/>
@@ -111,7 +111,11 @@ if (!securePage($_SERVER['PHP_SELF'])){die();}
         </div><!-- End Social -->
       </div><!--/col-md-3-->
     </div><!--/row-->
-    
+		<hr>
+		<div class="title-box">
+		  <!--  <p><img alt="stripe payments" border="0" src="img/stripe-payments.png" class="img-responsive pp" /></p>-->
+			<p><script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Buy Me a Coffee', '#46b798', 'M4M6BWTB');kofiwidget2.draw();</script> </p>
+		</div>
   </div><!--/container-->
   <!--=== End Content Part ===-->
     <?php include("footer.php"); ?>

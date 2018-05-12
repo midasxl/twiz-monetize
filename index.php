@@ -63,12 +63,11 @@ if (!securePage($_SERVER['PHP_SELF'])){die();}
 
                 <div class="col-md-7 animated fadeInRight"><br>
                     <p id="opener">
-						<span>THOROUGHWIZ is now completely FREE !<br>
+						<span>THOROUGHWIZ is now completely FREE !</span></br>
+						Thoroughwiz is a unique algorithm designed over years of observation and testing to produce a special ranking we call the <strong>TWIZrank</strong>. Based on several highly proficient handicappers' precise methodologies, this unique algorithm was developed and refined through computer programming to form a unique way of predicting and quantifying the results of a horse race.</br></br>
 							<a href='https://ko-fi.com/M4M6BWTB' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://www.thoroughwiz.com/img/kofi2.png' border='0' alt='Buy Us a Coffee at ko-fi.com' /></a>     
 							<a href="https://youtu.be/naMjj5oJOGk" target="_blank" class="btn btn-success"><i class="fa fa-video-camera"></i>&nbsp;&nbsp;Video 'How to upload'</a>     
-							<a href='https://twitter.com/intent/follow?screen_name=@THOROUGHWIZ' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://www.thoroughwiz.com/img/twitter2.jpg' border='0' alt='Follow us on twitter' />Follow us on twitter</a>
-							<br>
-						</span> A unique algorithm designed over years of observation and testing to produce a special ranking we call the <strong>TWIZrank</strong>. Based on several highly proficient handicappers' precise methodologies, this unique algorithm was developed and refined through computer programming to form a unique way of predicting and quantifying the results of a horse race.
+							<a href='https://twitter.com/intent/follow?screen_name=@THOROUGHWIZ' target='_blank'><img style='height:36px;' src='https://www.thoroughwiz.com/img/twitter-banner.png' border='0' alt='Follow us on twitter' /></a>
 					</p>
 				</div>
  <div class="col-md-1">
@@ -95,7 +94,7 @@ if (!securePage($_SERVER['PHP_SELF'])){die();}
                 <i class="service-icon"><img src="img/step1.png" alt="Step One" /></i>
                 <div class="desc">
                     <h4>Create Account</h4>
-                    <p><a href="register.php">Register with our site for free</a> We will Never resell your information to anyone.<br>If you like the product <a href='https://ko-fi.com/M4M6BWTB'>Buy Us a Coffee</a>  Thanks for the buzz!</p>
+                    <p><a href="register.php">Register with our site for FREE!</a> We will Never resell your information to anyone.<br>If you like the product <a href='https://ko-fi.com/M4M6BWTB'>Buy Us a Coffee!</a>  Thanks for the buzz!</p>
                     <p><a href='register.php' class='btn btn-success'><span class='glyphicon glyphicon-user'></span>&nbsp;&nbsp;Register Now!</a></p>
 
 			   </div>
@@ -109,7 +108,7 @@ if (!securePage($_SERVER['PHP_SELF'])){die();}
                 <i class="service-icon"><img src="img/step2.png" alt="Step Two" /></i>
                 <div class="desc">
                     <h4>Get Data File</h4>
-                    <p><a href="https://www.trackmaster.com/cgi-bin/register.cgi?tpp" target="_blank">Sign up at TrackMaster</a>.  Navigate to TrackMaster Past Performances Downloads, choose a track, choose a date, and get the Data File (XML).</p>
+                    <p><a href="https://www.trackmaster.com/cgi-bin/register.cgi?tpp" target="_blank">Sign up at TrackMaster</a>.  Navigate to TrackMaster Past Performances Downloads, choose a track, choose a date, and get the Data File.</p>
                     <p><a href="https://new.trackmaster.com/products/tpp/download" target="_blank" class="btn btn-success"><span class="glyphicon glyphicon-new-window"></span>&nbsp;&nbsp;Visit Trackmaster</a></p>
                 </div>
             </div>
@@ -121,7 +120,7 @@ if (!securePage($_SERVER['PHP_SELF'])){die();}
                 <i class="service-icon"><img src="img/step3.png" alt="Step Three" /></i>
                 <div class="desc">
                     <h4>Process Data File</h4>
-                    <p>Simply browse, select, and upload your Trackmaster (.ZIP) data file to process your Thoroughwiz sheet. Check out a sample below!</p>
+                    <p>Simply browse, select, and upload your Trackmaster data file to process your Thoroughwiz data sheet. Check out a sample below!</p>
                     <form action='product_free_sample.php' method='post' enctype='multipart/form-data'>
                     <button type="submit" class='btn btn-success'><span class="glyphicon glyphicon-gift"></span>&nbsp;&nbsp;View Free Samples!</button>
                     </form>
@@ -130,6 +129,11 @@ if (!securePage($_SERVER['PHP_SELF'])){die();}
         </div>
 
         </div><!-- /row -->
+		<hr>
+		<div class="title-box">
+		  <!--  <p><img alt="stripe payments" border="0" src="img/stripe-payments.png" class="img-responsive pp" /></p>-->
+			<p><script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Buy Me a Coffee', '#46b798', 'M4M6BWTB');kofiwidget2.draw();</script> </p>
+		</div>
     </div><!-- /container -->
 
     <!--=== Free Demo ===-->
@@ -164,8 +168,7 @@ if (!securePage($_SERVER['PHP_SELF'])){die();}
 
 
     <!-- End Like Block -->
-
-    <hr>
+	
     <?php include("footer.php"); ?>
     <?php include("modals.php"); ?>
 

@@ -65,6 +65,6 @@ if(!empty($_POST)){
 		echo json_encode($errors);
 	}
 }else{
-	header("Location: index.php"); die(); 
+	header("Location: /index.php"); die(); 
 }
 ?>

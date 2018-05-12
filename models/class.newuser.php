@@ -154,7 +154,7 @@ class User // this is the object that is created throughout the logic, and value
 				$stmt->close();
 				
 				// send email to administrator group notifying of the new member registration
-				$to      = 'sparkhw@gmail.com';
+				$to      = 'sparkhw@gmail.com,douglas.wood@zoho.com,mistylynn@stny.rr.com';
 				$subject = 'New Member Registration';
 				$message = 'A new member, ' . $this->clean_email . ', has registered for Thoroughwiz!';
 				$headers = 'From: noreply@example.com' . "\r\n" .

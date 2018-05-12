@@ -42,7 +42,7 @@
             <div class="row">
                 <div class="col-md-6">                     
                     <p>
-                        &copy; 2017 | ALL Rights Reserved<br />
+                        &copy; 2018 | ALL Rights Reserved<br />
                         <a href="privacy.php">Privacy Policy</a>&nbsp;|&nbsp;<a href="terms.php">Terms of Service</a><br />
 Your Thoroughbred Racing Wizard!
                     </p>  

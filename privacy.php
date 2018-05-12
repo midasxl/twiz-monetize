@@ -83,6 +83,11 @@ if (!securePage($_SERVER['PHP_SELF'])){die();}
       <p>v.1.0 May 2016 Created by: Thoroughwiz</p>
     </div>
     <!--/row-fluid-->
+		<hr>
+		<div class="title-box">
+		  <!--  <p><img alt="stripe payments" border="0" src="img/stripe-payments.png" class="img-responsive pp" /></p>-->
+			<p><script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Buy Me a Coffee', '#46b798', 'M4M6BWTB');kofiwidget2.draw();</script> </p>
+		</div>
   </div>
   <!--/container-->
   <!--=== End Content Part ===-->

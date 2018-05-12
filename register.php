@@ -32,7 +32,7 @@ if(isUserLoggedIn()) { header("Location: account.php"); die(); }
   <div class="container content">
     <div class="row">
     <div class="col-md-6 mobile-sep">
-      <h2 class="text-center" style="color:#303030;">Premium content at an affordable price!</h2>
+      <h2 class="text-center" style="color:#303030;">Premium content totally FREE!</h2>
       <div class="text-center">
         <div style="color:#959595;font-size:16px;" class="col-md-10 col-md-offset-1">
         <p>This is the first step in the required FREE registration process.  Please take a moment to read our <a href='terms.php'>Terms of Service</a> and <a href='privacy.php'>Privacy Policy</a>.</p>
@@ -40,6 +40,7 @@ if(isUserLoggedIn()) { header("Location: account.php"); die(); }
           <div class="col-md-12"><p>A Thoroughwiz membership brings top-notch service from one of the handicapping world's leading minds, and boasts a rich user experience from start to finish.</p>
           </div>
           <span style="color:#959595;">Registration with Thoroughwiz is free!</span><br>
+          <span style="color:#959595;">Free Trackmaster data processing!</span><br>
           <span style="color:#959595;"><a href='https://ko-fi.com/M4M6BWTB'>Buy Us a Coffee!</a></span><br>
          
           <!--<span><a href="faq.php">FAQ</a>&nbsp;|&nbsp;<a href="terms.php">TERMS</a></span>--> 

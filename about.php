@@ -33,11 +33,12 @@ if (!securePage($_SERVER['PHP_SELF'])){die();}
       <div class="col-md-6 md-margin-bottom-40">
         <h2>Thoroughwiz Company Profile</h2>
         <p>Our goal is simple: to provide you with unparalleled strategical race data in an interactive and easy-to-use format to assist you in making successful wagering  decisions at the track.  Thoroughwiz is a premiere horse racing sheet which uses a unique statistical algorithm to produce a special ranking called the <strong>TWIZ</strong> number. Our analysts are highly proficient in the art of handicapping, and have developed and refined a superior method of predicting and quantifying the results of a horse race.</p>
-        <p>By registering FOR FREE, and purchasing credits to upload your Trackmaster data sheets you will be provided with a unique handicapping tool to help take much of the guesswork out of your picks.  Whatever you decide to utilize as your handicapping system, be it exclusive use of our Thoroughwiz data sheets, or as a complement to your current handicapping strategy, our service will prove to be a positive addition to your handicapping arsenal.</p>
+        <p><a href="register.php">Free registration</a> will allow you access to upload your Trackmaster data sheets to our processing engine.  The resulting data sheet is a unique handicapping tool to help take much of the guesswork out of your picks.  Whatever you decide to utilize as your handicapping system, be it exclusive use of our Thoroughwiz data sheet, or as a complement to your current handicapping strategy, our service will prove to be a positive addition to your handicapping arsenal.</p>
         <div class="row portfolio-item1">
           <div class="col-xs-10">
             <ul class="list-unstyled">
-              <li><i class="fa fa-star color-green"></i>&nbsp;&nbsp;Uses Exclusive Equibase Speed Figure</li>
+              <li><i class="fa fa-star color-green"></i>&nbsp;&nbsp;Completely free registration.</li>
+              <li><i class="fa fa-star color-green"></i>&nbsp;&nbsp;Uses Exclusive Equibase Speed Figure.</li>
               <li><i class="fa fa-star color-green"></i>&nbsp;&nbsp;Easy to use and easy to understand.</li>
               <li><i class="fa fa-star color-green"></i>&nbsp;&nbsp;Based on Trackmaster Past Performance data.</li>
          
@@ -47,8 +48,8 @@ if (!securePage($_SERVER['PHP_SELF'])){die();}
         
         <div class="row portfolio-item1">
           <div class="col-xs-10">
-            <h2>Thoroughwiz is now FREE</h2>
-        		<p><a href='https://ko-fi.com/M4M6BWTB'>Buy Me a Coffee</a></p>
+            <h2>Thoroughwiz is now FREE!</h2>
+        		<a href="register.php" class="btn btn-success"><span class='glyphicon glyphicon-user'></span>&nbsp;&nbsp;Register Now!</a>
         		
           </div>
         </div>
@@ -87,11 +88,16 @@ if (!securePage($_SERVER['PHP_SELF'])){die();}
       <!-- End Carousel -->
     </div>
     <!--/row-->
-    <div class="tag-box tag-box-v2">
+    <!--<div class="tag-box tag-box-v2">
       <p style="margin-bottom:10px;">So what do you think?  Are you ready?  Come on, give us a try, you won't be disappointed!</p>
       <a href="register.php" class="btn btn-success"><span class='glyphicon glyphicon-user'></span>&nbsp;&nbsp;Register Now!</a> 
     </div>
-    <div class="margin-bottom-20 clearfix"></div>
+    <div class="margin-bottom-20 clearfix"></div>-->
+		<hr>
+		<div class="title-box">
+		  <!--  <p><img alt="stripe payments" border="0" src="img/stripe-payments.png" class="img-responsive pp" /></p>-->
+			<p><script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Buy Me a Coffee', '#46b798', 'M4M6BWTB');kofiwidget2.draw();</script> </p>
+		</div>
   </div>
   <!--/container-->
   <!--=== End Content Part ===-->
