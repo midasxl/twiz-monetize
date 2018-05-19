@@ -190,7 +190,10 @@ if(isUserLoggedIn()) {
                                                             <button type='submit' class='btn btn-primary btn-u-sm'><i class='fa fa-file-text-o'></i>&nbsp;&nbsp;PROGRAM</button>
                                                 </form>&nbsp;&nbsp;
 
-                                                       
+                                                        <form style='display:inline' action='scripts/misty.php' method='post' enctype='multipart/form-data' target='_blank'>
+                                                            <input type='hidden' name='card' value='" .$sheets['sheet']. "'>
+                                                            <button type='submit' class='btn btn-primary btn-u-sm'><i class='fa fa-file-text-o'></i>&nbsp;&nbsp;MISTY</button>
+                                                </form>&nbsp;&nbsp;
 													</td>									                                   
 												</tr>";
                                         }

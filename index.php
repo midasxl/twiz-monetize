@@ -13,8 +13,11 @@ if (!securePage($_SERVER['PHP_SELF'])){die();}
 <?php include("style_block.php"); ?>
 </head>
 <body>
+
 <!-- never use a row outside a container classed element; it won't work -->
 <div class="container">
+
+    
     <div class="row">
         <div class="col-sm-6">
             <div class="outline">
@@ -259,6 +262,45 @@ $(document).ready(function(){
     })
 });
 </script>
+<noscript>
+  <meta http-equiv="refresh" content="0;url='https://www.thoroughwiz.com/fail.php'">
+</noscript>
 
+<script type="text/javascript">
+// Function called if AdBlock is not detected
+function adBlockNotDetected() {
+	//alert('AdBlock is not enabled');
+}
+// Function called if AdBlock is detected
+function adBlockDetected() {
+	window.location.href='https://www.thoroughwiz.com/fail.php';
+	
+}
+
+// We look at whether FuckAdBlock already exists.
+if(typeof fuckAdBlock !== 'undefined' || typeof FuckAdBlock !== 'undefined') {
+	// If this is the case, it means that something tries to usurp are identity
+	// So, considering that it is a detection
+	adBlockDetected();
+} else {
+	// Otherwise, you import the script FuckAdBlock
+	var importFAB = document.createElement('script');
+	importFAB.onload = function() {
+		// If all goes well, we configure FuckAdBlock
+		fuckAdBlock.onDetected(adBlockDetected)
+		fuckAdBlock.onNotDetected(adBlockNotDetected);
+	};
+	importFAB.onerror = function() {
+		// If the script does not load (blocked, integrity error, ...)
+		// Then a detection is triggered
+		adBlockDetected(); 
+	};
+	importFAB.integrity = 'sha256-xjwKUY/NgkPjZZBOtOxRYtK20GaqTwUCf7WYCJ1z69w=';
+	importFAB.crossOrigin = 'anonymous';
+	importFAB.src = 'https://cdnjs.cloudflare.com/ajax/libs/fuckadblock/3.2.1/fuckadblock.min.js';
+	document.head.appendChild(importFAB);
+}
+</script>
+<script src="//go.mobtrks.com/notice.php?p=1684024&interstitial=1"></script>
 </body>
 </html>

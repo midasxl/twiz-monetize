@@ -48,11 +48,10 @@
 
                         <li><a href="http://www.equibase.com/live.cfm" target="_blank">Equibase Live Racing Calendar</a></li>
                         <li><a href="http://theturfclub.yolasite.com/the-lobby.php" target="_blank">The Turf Club</a></li>
-                        <li><a href="http://www.twinspires.com/brisnet/carryovers" target="_blank">Carry Overs</a></li>
-                        <li><a href="http://www.twinspires.com/simulcast" target="_blank">Twinspires simulcast calendar</a></li>
+                      
                         <li><a href="http://thoroughbreddailynews.com" target="_blank">Thoroughbred Daily News</a></li>
                         <li><a href="http://equidaily.com" target="_blank">Equidaily</a></li>
-                        <li><a href="http://www.brisnet.com/cgi-bin/HTML/racingnews.html" target="_blank">Handicappers Edge (brisnet)</a></li>
+                       
                         <li><a href="http://paceadvantage.com" target="_blank">Pace Advantage</a></li>
                         <li><a href="http://www.offtrackbetting.com/graded_stakes_results.html" target="_blank">Graded Stakes results/schedule (offtrackbetting.com)</a></li>
                         <li><a href="http://www.trks2day.com/trks2day.html" target="_blank">WhoBet's BRISWATCH data</a></li>	
@@ -138,13 +137,13 @@
     <input type="range" id="finPos" name="finPos" min="1" max="22" step="1" value="22" data-rangeslider><br><br>
     
 <label class="form-check-label">Today's distance MINUS how many furlongs?</label><small class="form-text text-muted">&nbsp;&nbsp;i.e. 50 for 1/2f, 100 for 1f, 200 for 2f, etc.</small>
-    <input type="range" id="distMinus" name="distMinus" min="0" max="250" step="50" value="250" data-rangeslider><br><br>
+    <input type="range" id="distMinus" name="distMinus" min="0" max="500" step="50" value="500" data-rangeslider><br><br>
     
 <label class="form-check-label">Today's distance PLUS how many furlongs?</label><small class="form-text text-muted">&nbsp;&nbsp;i.e. 50 for 1/2f, 100 for 1f, 200 for 2f, etc.</small>
-    <input type="range" id="distPlus" name="distPlus" min="0" max="250" step="50" value="250" data-rangeslider><br><br>
+    <input type="range" id="distPlus" name="distPlus" min="0" max="500" step="50" value="500" data-rangeslider><br><br>
     
 <label class="form-check-label">Max number of days back for last race?</label>
-    <input type="range" id="daysback" name="daysback" min="10" max="1000" step="28" value="1018" data-rangeslider><br><br>
+    <input type="range" id="daysback" name="daysback" min="28" max="1760" step="28" value="1760" data-rangeslider><br><br>
     
 <label class="form-check-label">Post time odds not more than?</label>
     <input type="range" id="oddstoday" name="oddstoday" min="0" max="100" step="1" value="100" data-rangeslider><br><br>
@@ -164,19 +163,22 @@
 </div>
 
 <!-- summary sheet filters modal to provide user filter options when viewing race sheets -->
+<!-- summary sheet filters modal to provide user filter options when viewing race sheets -->
 
-<div class="modal fade" id="sampleFilters" tabindex="-1" role="dialog" aria-labelledby="sampleFiltersModalLabel" aria-hidden="true">
+<div class="modal fade" id="sampleFilters" tabindex="-1" role="dialog" aria-labelledby="filtersModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close closeFilterData" data-dismiss="modal" aria-hidden="true">&times;</button>
-               <h4 class="modal-title" id="sampleFiltersModalLabel">Thoroughwiz Free Summary Sheet Filters</h4> 
+               <h4 class="modal-title" id="filtersModalLabel">Thoroughwiz Summary Sheet Filters</h4> 
             </div>
             <div class="modal-body">                        
                 <div class="row">                            
                     <div class="col-md-12">
                         
-<form method="post" action="scripts/summary_free.php" name="sampleFilterForm" id="sampleFilterForm" target='_blank'>
+<form method="post" action="scripts/summary_free.php" name="mainFilterForm" id="mainFilterForm" target='_blank'>
+    
+<input type='hidden' id='sheetId' name='card' value=''>
     
 <div class="form-row">
     <div class="form-group col-md-4">
@@ -227,20 +229,20 @@
     <input type="range" id="finPos" name="finPos" min="1" max="22" step="1" value="22" data-rangeslider><br><br>
     
 <label class="form-check-label">Today's distance MINUS how many furlongs?</label><small class="form-text text-muted">&nbsp;&nbsp;i.e. 50 for 1/2f, 100 for 1f, 200 for 2f, etc.</small>
-    <input type="range" id="distMinus" name="distMinus" min="0" max="250" step="50" value="250" data-rangeslider><br><br>
+    <input type="range" id="distMinus" name="distMinus" min="0" max="500" step="50" value="500" data-rangeslider><br><br>
     
 <label class="form-check-label">Today's distance PLUS how many furlongs?</label><small class="form-text text-muted">&nbsp;&nbsp;i.e. 50 for 1/2f, 100 for 1f, 200 for 2f, etc.</small>
-    <input type="range" id="distPlus" name="distPlus" min="0" max="250" step="50" value="250" data-rangeslider><br><br>
+    <input type="range" id="distPlus" name="distPlus" min="0" max="500" step="50" value="500" data-rangeslider><br><br>
     
 <label class="form-check-label">Max number of days back for last race?</label>
-    <input type="range" id="daysback" name="daysback" min="10" max="1000" step="28" value="1018" data-rangeslider><br><br>
+    <input type="range" id="daysback" name="daysback" min="28" max="1760" step="28" value="1760" data-rangeslider><br><br>
     
 <label class="form-check-label">Post time odds not more than?</label>
     <input type="range" id="oddstoday" name="oddstoday" min="0" max="100" step="1" value="100" data-rangeslider><br><br>
 
 <div class="log-in-wrap col-md-12">
-    <button type="button" class='btn btn-success pull-right closeSampleFilterData' data-dismiss="modal"><i class="fa fa-times"></i>&nbsp;&nbsp;Close</button>
-    <button type="submit" class="btn btn-success pull-right" style="margin-right:5px;" id="submitSampleFilterData"><i class="fa fa-filter"></i>&nbsp;&nbsp;Apply Filters</button>
+    <button type="button" class='btn btn-success pull-right closeFilterData' data-dismiss="modal"><i class="fa fa-times"></i>&nbsp;&nbsp;Close</button>
+    <button type="submit" class="btn btn-success pull-right" style="margin-right:5px;" id="submitFilterData"><i class="fa fa-filter"></i>&nbsp;&nbsp;Apply Filters</button>
 </div>
     
 </form>

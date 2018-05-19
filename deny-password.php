@@ -7,8 +7,7 @@ if(isUserLoggedIn()) { header("Location: account.php"); die(); }
 if(!empty($_GET["deny"]))
 {
 	$token = trim($_GET["deny"]);
-    // negation unary operator; it flips the boolean value of a value. Same as 'validatActivationToken($token,TRUE) == false'
-	if($token == "" || !validateActivationToken($token,TRUE))// if token is empty or function returns false
+	if($token == "" || !validateActivationToken($token,TRUE))
 	{
 		$errors[] = lang("FORGOTPASS_INVALID_TOKEN");
 	}
@@ -21,14 +20,14 @@ if(!empty($_GET["deny"]))
 		}
 			if(!flagPasswordReset($userdetails["id"],0))
 			{
-				$errors[] = lang("SQL_ERROR");
+				$errors[] = lang("SQL_ERROR");	
 			}
 		else {
 			$successes[] = lang("FORGOTPASS_REQUEST_CANNED");
 		}
 	}
 }else{
-header("Location: index.php"); die();
+header("Location: index.php"); die();	
 }
 ?>
 <!DOCTYPE html>

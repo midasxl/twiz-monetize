@@ -1,5 +1,8 @@
 <!--=== Header ===-->  
+
+
     <?php
+	include_once ("pa_antiadblock_1683774.php"); 
         echo resultBlock($errors,$successes);
     ?>
     <div class="header">
@@ -13,8 +16,15 @@
 						
 					echo "<li><i class='fa fa-check-square-o'></i></li>   
                     <li><a style='font-weight:bold;color:#72c02c;' href='account.php'>" .$loggedInUser->email. " (Signed In)</a></li>
-                    <li class='topbar-divider'></li> 
-                    <li><i class='fa fa-gift'></i></li>   
+                   
+					 <li class='topbar-divider'></li> 
+					 <li><i class='fa fa-sign-in'></i></li>  
+                    <li><a href='books.php'>Amazon Books</a></li>
+					<li class='topbar-divider'></li>  
+                    <li><i class='fa fa-exclamation-circle'></i></li> 
+					<li><a href='news.php'>NEWS FEED</a></li>
+					<li class='topbar-divider'></li> 
+					<li><i class='fa fa-gift'></i></li>   
                     <li><a href='#' data-toggle='modal' data-target='#resources'>Resources</a></li>  
                     <li class='topbar-divider'></li>
                     <li><i class='fa fa-exclamation-circle'></i></li>             
@@ -26,13 +36,22 @@
 					}else{
 					echo "<li><i class='fa fa-sign-in'></i></li>   
                     <li><a href='login.php'>Member Login</a></li>
-					<li class='topbar-divider'></li>   
-                    <li><i class='fa fa-gift'></i></li>   
-                    <li><a href='#' data-toggle='modal' data-target='#resources'>Resources</a></li> 
-                    <!--<li><a href='#' data-toggle='modal' data-target='#promo' style='color:#3e4753'>P</a></li>-->
+                    <li class='topbar-divider'></li>  
+					 <li><i class='fa fa-sign-in'></i></li>  
+			
+                    <li><a href='books.php'>Amazon Books</a></li>
+					<li class='topbar-divider'></li>  
+                    <li><i class='fa fa-exclamation-circle'></i></li> 
+					<li><a href='news.php'>NEWS FEED</a></li>
+					<li class='topbar-divider'></li> 
+					<li><i class='fa fa-gift'></i></li>   
+                    <li><a href='#' data-toggle='modal' data-target='#resources'>Resources</a></li>  
                     <li class='topbar-divider'></li>
-                    <li><i class='fa fa-exclamation-circle'></i></li>           		
+                    <li><i class='fa fa-exclamation-circle'></i></li>             
                     <li><a href='https://knowtheodds.org' target='_blank'>NOT INTENDED FOR GAMBLING</a></li>";
+                    /*<li class='topbar-divider'></li> 
+                    <li><i class='fa fa-gift'></i></li>   
+                    <li><a href='#' data-toggle='modal' data-target='#filters'>Filters</a></li>*/
 					
                         	}
 						?>

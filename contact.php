@@ -62,7 +62,7 @@ if (!securePage($_SERVER['PHP_SELF'])){die();}
           
         <!--<div id="form-messages" title="Thoroughwiz says..." style="text-align:center;padding:5px;"></div>-->
         <p class="success" style="display:none;color:#090"><i class="fa fa-check-square-o"></i>Thank you for your correspondence.  Your message has been sent successfully.</p>
-        <p class="error" style="display:none;"><i class="fa fa-frown-o"></i>Our email agent has experienced errors. Please notify Thoroughwiz <a href="mailto:support@thoroughwiz.com" class="">Administrators.</a>&nbsp;&nbsp;We sincerely apologize for this inconvenience.</p>
+        <p class="error" style="display:none;"><i class="fa fa-frown-o"></i>Our email agent has experienced errors. Please notify Thoroughwiz <a href="mailto:dwood@thoroughwiz.com" class="">Administrators.</a>&nbsp;&nbsp;We sincerely apologize for this inconvenience.</p>
         
       </div>
       <!--/col-md-9-->
@@ -74,7 +74,7 @@ if (!securePage($_SERVER['PHP_SELF'])){die();}
         <ul class="list-unstyled who margin-bottom-30">
           <!--<li><i class="fa fa-users"></i>Partnership: Wood/Husband-Wood</li>
           <li><i class="fa fa-home"></i>Horseheads, NY 14845</li>-->
-          <li><a href="mailto:support@thoroughwiz.com?subject=From the contact page"><i class="fa fa-envelope"></i>support@thoroughwiz.com</a></li>
+          <li><a href="mailto:dwood@thoroughwiz.com?subject=From the contact page"><i class="fa fa-envelope"></i>dwood@thoroughwiz.com</a></li>
           <li><a href="https://www.thoroughwiz.com"><i class="fa fa-globe"></i>https://www.thoroughwiz.com</a></li>
         </ul>
         <!-- Business Hours -->

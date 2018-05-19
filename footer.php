@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-md-4 md-margin-bottom-40">
                     <div class="headline"><h2>About</h2></div>  
-                    <p class="margin-bottom-25 md-margin-bottom-40">Thoroughwiz is a premiere, purchase-based, self-service  handicapping sheet.  We offer unparalleled strategic algorithms to guide your decisions at the track.  What? You thought this was going to be complicated?</p>    
+                    <p class="margin-bottom-25 md-margin-bottom-40">Thoroughwiz is a premiere, FREE Ad-Driven, self-service  handicapping sheet.  We offer unparalleled strategic algorithms to guide your decisions at the track.  What? You thought this was going to be complicated?</p>    
                 </div><!--/col-md-4-->                  
                 <div class="col-md-4 md-margin-bottom-40">
                     <div class="headline"><h2>Related Links</h2></div>                    
